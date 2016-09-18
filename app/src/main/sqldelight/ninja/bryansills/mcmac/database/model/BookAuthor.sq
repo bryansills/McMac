@@ -1,0 +1,6 @@
+CREATE TABLE book_author (
+  book_id LONG NOT NULL,
+  author_id LONG NOT NULL,
+  FOREIGN KEY (book_id) REFERENCES book(_id),
+  FOREIGN KEY (author_id) REFERENCES author(_id)
+);
