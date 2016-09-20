@@ -1,7 +1,9 @@
+import java.util.Calendar;
+
 CREATE TABLE author (
-  _id LONG PRIMARY KEY AUTOINCREMENT,
-  name STRING NOT NULL,
-  birth_year CLASS('java.util.Calendar')
+  _id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL,
+  birth_year INTEGER AS Calendar NOT NULL
 );
 
 select_all:
