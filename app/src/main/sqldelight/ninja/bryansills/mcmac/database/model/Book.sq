@@ -4,7 +4,9 @@ CREATE TABLE book (
   _id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
   isbn TEXT NOT NULL,
   title TEXT NOT NULL,
-  release_year INTEGER AS Calendar NOT NULL
+  author INTEGER,
+  release_year INTEGER AS Calendar NOT NULL,
+  FOREIGN KEY (author) REFERENCES author(_id)
 );
 
 select_all:
@@ -20,3 +22,9 @@ select_by_isbn:
 select *
 from book
 where book.isbn = ?;
+
+for_author:
+select *
+from book
+JOIN author ON book.author = author._id
+WHERE author._id = ?;

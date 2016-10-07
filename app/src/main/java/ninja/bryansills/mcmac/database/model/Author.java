@@ -11,5 +11,5 @@ public abstract class Author implements AuthorModel {
 
     public static final Factory<Author> FACTORY = new Factory<>(AutoValue_Author::new, DATE_ADAPTER);
 
-    public static final Mapper<Author> MAPPER = new Mapper<>(FACTORY);
+    public static final Mapper<Author> MAPPER = FACTORY.select_allMapper();
 }
