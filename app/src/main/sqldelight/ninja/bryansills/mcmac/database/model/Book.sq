@@ -13,7 +13,8 @@ CREATE TABLE book (
 
 select_all:
 select *
-from book;
+from book
+JOIN author ON book.author = author._id;
 
 select_by_title:
 select *
