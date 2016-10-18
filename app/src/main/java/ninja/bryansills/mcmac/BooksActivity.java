@@ -21,8 +21,11 @@ import ninja.bryansills.mcmac.database.model.Book;
 
 public class BooksActivity extends AppCompatActivity {
 
+    public static final String AUTHOR_ID = "AUTHOR_ID";
     private RecyclerView bookList;
     private BookAdapter bookAdapter;
+
+    private Cursor cursor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +39,13 @@ public class BooksActivity extends AppCompatActivity {
         List<Author> authors = new ArrayList<>();
 
         SQLiteDatabase db = DatabaseHelper.getInstance(this).getReadableDatabase();
-        Cursor cursor = db.rawQuery(Book.SELECT_ALL, new String[0]);
+        long authorId = getIntent().getLongExtra(AUTHOR_ID, -1);
+
+        if (authorId == -1) {
+            cursor = db.rawQuery(Book.SELECT_ALL, new String[0]);
+        } else {
+            cursor = db.rawQuery(Book.FOR_AUTHOR, new String[]{String.valueOf(authorId)});
+        }
 
         for(cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
             Book.ForAuthor bookForAuthor = Book.FOR_AUTHOR_MAPPER.map(cursor);
