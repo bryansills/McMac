@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">McMac</string>
+    <string name="to_books">To Books</string>
+    <string name="to_authors">To Authors</string>
 </resources>
