@@ -80,7 +80,7 @@ public class BooksActivity extends AppCompatActivity {
     }
 
     private class BookViewHolder extends RecyclerView.ViewHolder {
-        public TextView title, author, publishDate;
+        public TextView title, author, genre, publishDate;
         private SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
         public BookViewHolder(View v) {
@@ -88,12 +88,14 @@ public class BooksActivity extends AppCompatActivity {
 
             title = (TextView) v.findViewById(R.id.title);
             author = (TextView) v.findViewById(R.id.author);
+            genre = (TextView) v.findViewById(R.id.genre);
             publishDate = (TextView) v.findViewById(R.id.publish_date);
         }
 
         public void bind(Book book, Author bookAuthor) {
             title.setText(book.title());
             author.setText(bookAuthor.name());
+            genre.setText(book.genre().name());
             publishDate.setText(formatter.format(book.release_year().getTime()));
         }
     }

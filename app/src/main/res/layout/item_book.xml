@@ -18,6 +18,11 @@
         android:textStyle="italic"
         tools:text="Bryan Sills"/>
     <TextView
+        android:id="@+id/genre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Super funny"/>
+    <TextView
         android:id="@+id/publish_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
