@@ -1,20 +1,23 @@
 package ninja.bryansills.mcmac.database.adapter;
 
-import android.content.ContentValues;
-import android.database.Cursor;
+import android.support.annotation.NonNull;
 
 import com.squareup.sqldelight.ColumnAdapter;
 
 import java.util.Calendar;
 
-public class DateAdapter implements ColumnAdapter<Calendar> {
-    @Override public void marshal(ContentValues contentValues, String columnName, Calendar date) {
-        contentValues.put(columnName, date.getTimeInMillis());
+public class DateAdapter implements ColumnAdapter<Calendar, Long> {
+
+    @NonNull
+    @Override
+    public Calendar decode(Long databaseValue) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(databaseValue);
+        return calendar;
     }
 
-    @Override public Calendar map(Cursor cursor, int columnIndex) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(cursor.getLong(columnIndex));
-        return calendar;
+    @Override
+    public Long encode(@NonNull Calendar value) {
+        return value.getTimeInMillis();
     }
 }

@@ -35,7 +35,7 @@ public class AuthorsActivity extends AppCompatActivity {
         List<Author> authors = new ArrayList<>();
 
         SQLiteDatabase db = DatabaseHelper.getInstance(this).getReadableDatabase();
-        Cursor cursor = db.rawQuery(Author.SELECT_ALL, new String[0]);
+        Cursor cursor = db.rawQuery(Author.SELECT_ALL, null);
 
         for(cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
             Author author = Author.MAPPER.map(cursor);

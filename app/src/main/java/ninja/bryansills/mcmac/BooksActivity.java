@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.squareup.sqldelight.SqlDelightStatement;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,9 +44,10 @@ public class BooksActivity extends AppCompatActivity {
         long authorId = getIntent().getLongExtra(AUTHOR_ID, -1);
 
         if (authorId == -1) {
-            cursor = db.rawQuery(Book.SELECT_ALL, new String[0]);
+            cursor = db.rawQuery(Book.SELECT_ALL, null);
         } else {
-            cursor = db.rawQuery(Book.FOR_AUTHOR, new String[]{String.valueOf(authorId)});
+            SqlDelightStatement bookForAuthor = Book.FACTORY.for_author(authorId);
+            cursor = db.rawQuery(bookForAuthor.statement, bookForAuthor.args);
         }
 
         for(cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {

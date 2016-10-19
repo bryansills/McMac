@@ -20,7 +20,7 @@ public abstract class Book implements BookModel {
     }
 
     private static final DateAdapter DATE_ADAPTER = new DateAdapter();
-    private static final ColumnAdapter<Genre> GENRE_ADAPTER = EnumColumnAdapter.create(Genre.class);
+    private static final ColumnAdapter<Genre, String> GENRE_ADAPTER = EnumColumnAdapter.create(Genre.class);
 
     public static final Factory<Book> FACTORY = new Factory<>(new Creator<Book>() {
         @Override
