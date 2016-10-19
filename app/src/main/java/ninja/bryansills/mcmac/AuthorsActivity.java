@@ -86,7 +86,7 @@ public class AuthorsActivity extends AppCompatActivity {
             birthday = (TextView) v.findViewById(R.id.birthday);
         }
 
-        public void bind(Author bookAuthor) {
+        public void bind(final Author bookAuthor) {
             name.setText(bookAuthor.name());
             birthday.setText(formatter.format(bookAuthor.birth_year().getTime()));
 
