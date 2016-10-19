@@ -10,6 +10,8 @@ import ninja.bryansills.mcmac.database.model.Author;
 import ninja.bryansills.mcmac.database.model.Book;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
+
+    private static final String DATABASE_NAME = "McMac.db";
     private static final int DATABASE_VERSION = 1;
 
     private static DatabaseHelper instance;
@@ -22,7 +24,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public DatabaseHelper(Context context) {
-        super(context, null, null, DATABASE_VERSION);
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
