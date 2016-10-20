@@ -6,6 +6,10 @@ CREATE TABLE author (
   birth_year INTEGER AS Calendar NOT NULL
 );
 
+insert_author:
+INSERT INTO author (name, birth_year)
+VALUES (?, ?);
+
 select_all:
 select *
 from author;

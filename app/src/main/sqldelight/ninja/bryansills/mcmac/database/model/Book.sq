@@ -11,6 +11,10 @@ CREATE TABLE book (
   FOREIGN KEY (author) REFERENCES author(_id)
 );
 
+insert_book:
+INSERT INTO book (isbn, title, author, release_year, genre)
+VALUES (?, ?, ?, ?, ?);
+
 select_all:
 select *
 from book
